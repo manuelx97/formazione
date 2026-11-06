@@ -1,0 +1,15 @@
+{
+  "watch": [
+    "server.js",
+    "controllers",
+    "routes/api.js",
+    "tests",
+    "views",
+    "public"
+  ],
+  "ext": "js,json,html,css",
+  "env": {
+    "NODE_ENV": "test",
+    "PORT": "3001"
+  }
+}

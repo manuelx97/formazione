@@ -1,0 +1,17 @@
+# Only these root entries belong to this public repository.
+# Other courses, standalone repositories and local backups stay private.
+/*
+!/.gitignore
+!/README.md
+!/freecodecamp/
+
+# Installed dependencies and local environment files
+node_modules/
+.env
+.env.*
+*.env
+
+# Local OS, logs and generated files
+.DS_Store
+*.log
+coverage/
