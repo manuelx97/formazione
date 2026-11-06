@@ -91,8 +91,9 @@ La risposta per `10L` è:
 }
 ```
 
-Gli errori sono stringhe JSON con stato HTTP 200, come previsto dal progetto:
-`invalid unit`, `invalid number`, `invalid number and unit`.
+Le conversioni valide sono oggetti JSON. Gli errori sono invece testo semplice
+(`text/plain`) con stato HTTP 200, senza virgolette JSON, come richiesto dai test
+freeCodeCamp: `invalid unit`, `invalid number`, `invalid number and unit`.
 
 ## Invio a freeCodeCamp
 

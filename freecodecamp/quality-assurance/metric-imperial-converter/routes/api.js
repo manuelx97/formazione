@@ -14,18 +14,18 @@ module.exports = function (app) {
     const invalidUnit = initUnit === 'invalid unit';
 
     if (invalidNumber && invalidUnit) {
-      return res.json('invalid number and unit');
+      return res.type('text').send('invalid number and unit');
     }
     if (invalidNumber) {
-      return res.json('invalid number');
+      return res.type('text').send('invalid number');
     }
     if (invalidUnit) {
-      return res.json('invalid unit');
+      return res.type('text').send('invalid unit');
     }
 
     const returnNum = convertHandler.convert(initNum, initUnit);
     if (returnNum === 'invalid number') {
-      return res.json('invalid number');
+      return res.type('text').send('invalid number');
     }
 
     const returnUnit = convertHandler.getReturnUnit(initUnit);

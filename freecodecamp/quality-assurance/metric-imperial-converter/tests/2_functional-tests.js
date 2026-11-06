@@ -21,27 +21,36 @@ suite('Functional Tests', function() {
   });
 
   test('GET /api/convert with an invalid unit such as 32g', function() {
-    return chai.request(server).get('/api/convert').query({ input: '32g' })
-      .then(function(res) {
-        assert.strictEqual(res.status, 200);
-        assert.strictEqual(res.body, 'invalid unit');
-      });
+    return Promise.all(['32g', '1min'].map(function(input) {
+      return chai.request(server).get('/api/convert').query({ input })
+        .then(function(res) {
+          assert.strictEqual(res.status, 200);
+          assert.match(res.headers['content-type'], /^text\/plain/);
+          assert.strictEqual(res.text, 'invalid unit');
+        });
+    }));
   });
 
   test('GET /api/convert with an invalid number such as 3/7.2/4kg', function() {
-    return chai.request(server).get('/api/convert').query({ input: '3/7.2/4kg' })
-      .then(function(res) {
-        assert.strictEqual(res.status, 200);
-        assert.strictEqual(res.body, 'invalid number');
-      });
+    return Promise.all(['3/7.2/4kg', '1//2gal', '1/0kg'].map(function(input) {
+      return chai.request(server).get('/api/convert').query({ input })
+        .then(function(res) {
+          assert.strictEqual(res.status, 200);
+          assert.match(res.headers['content-type'], /^text\/plain/);
+          assert.strictEqual(res.text, 'invalid number');
+        });
+    }));
   });
 
   test('GET /api/convert with an invalid number and unit', function() {
-    return chai.request(server).get('/api/convert').query({ input: '3/7.2/4kilomegagram' })
-      .then(function(res) {
-        assert.strictEqual(res.status, 200);
-        assert.strictEqual(res.body, 'invalid number and unit');
-      });
+    return Promise.all(['3/7.2/4kilomegagram', '1//2min'].map(function(input) {
+      return chai.request(server).get('/api/convert').query({ input })
+        .then(function(res) {
+          assert.strictEqual(res.status, 200);
+          assert.match(res.headers['content-type'], /^text\/plain/);
+          assert.strictEqual(res.text, 'invalid number and unit');
+        });
+    }));
   });
 
   test('GET /api/convert without a number, such as kg', function() {
