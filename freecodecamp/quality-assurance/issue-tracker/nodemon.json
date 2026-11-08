@@ -1,0 +1,8 @@
+{
+  "watch": ["server.js", "database.js", "routes/api.js", "tests", "views", "public"],
+  "ext": "js,json,html,css",
+  "env": {
+    "PORT": "3002",
+    "NODE_ENV": "test"
+  }
+}

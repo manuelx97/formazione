@@ -12,7 +12,7 @@ esclusi dalla pubblicazione.
 | Progetto | Stato |
 | --- | --- |
 | [Metric-Imperial Converter](freecodecamp/quality-assurance/metric-imperial-converter/) | Implementato: 16 test unitari e 5 funzionali |
-| Issue Tracker | Da iniziare |
+| [Issue Tracker](freecodecamp/quality-assurance/issue-tracker/) | Implementato: 14 test funzionali con MongoDB |
 | Personal Library | Da iniziare |
 | Sudoku Solver | Da iniziare |
 | American British Translator | Da iniziare |
@@ -44,6 +44,19 @@ Per creare un URL temporaneo, con il server attivo:
 ```bash
 cloudflared tunnel --url http://localhost:3001
 ```
+
+### Avvio dell'Issue Tracker
+
+```bash
+cd freecodecamp/quality-assurance/issue-tracker
+npm ci --registry=https://registry.npmjs.org
+npm run dev
+```
+
+Apri `http://localhost:3002`, oppure `http://localhost:3002/apitest/` per gestire
+le issue di un progetto. MongoDB Server deve essere attivo. L'app e i test usano
+database locali distinti, senza interferire con gli altri progetti.
+Per il tunnel di questo progetto usa `cloudflared tunnel --url http://localhost:3002`.
 
 ## Sicurezza
 
